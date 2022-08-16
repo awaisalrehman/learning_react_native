@@ -11,8 +11,7 @@ const AuthReducer = (state = AuthInitialState, {type, payload}) => {
             return {...state, isLoggedIn: true};
 
         case LOGOUT:
-            console.log(payload);
-            return {...state, isLoggedIn: flase};
+            return {...state, isLoggedIn: false};
     
         default:
             return state;

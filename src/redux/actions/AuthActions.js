@@ -10,3 +10,9 @@ export const userLogin = (username, password) => dispatch => {
         }
     });
 }
+
+export const userLogout = () => dispatch => {
+    dispatch({
+        type: LOGOUT,
+    });
+}
