@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerNavigation from './DrawerNavigation';
 import AuthNavigation from './AuthNavigation';
+import { useSelector, useDispatch } from 'react-redux';
+import { userLogin } from '../redux/actions/AuthActions';
 
 const AppNavContainer = () => {
-    const isLoggedin = true;
+    const auth = useSelector(state => state.AuthReducer);
+    const dispatch = useDispatch();
+
     return (
         <NavigationContainer>
-            {isLoggedin ? <DrawerNavigation /> : <AuthNavigation />}
+            {auth.isLoggedIn ? <DrawerNavigation /> : <AuthNavigation />}
         </NavigationContainer>
     );
 }
