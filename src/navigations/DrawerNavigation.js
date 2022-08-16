@@ -6,7 +6,7 @@ import { HOME_NAVIGATOR } from "../constants/routeNames";
 const DrawerNavigation = () => {
     const Drawer = createDrawerNavigator();
 
-    return <Drawer.Navigator screenOptions={{ header: () => null }}>
+    return <Drawer.Navigator screenOptions={{ header: () => null , swipeEdgeWidth: 100}}>
         <Drawer.Screen name={HOME_NAVIGATOR} component={HomeNavigation} />
     </Drawer.Navigator>
 }
