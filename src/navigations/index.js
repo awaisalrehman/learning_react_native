@@ -1,19 +1,17 @@
-import React, { useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import DrawerNavigation from './DrawerNavigation';
 import AuthNavigation from './AuthNavigation';
-import { useSelector, useDispatch } from 'react-redux';
-import { userLogin } from '../redux/actions/AuthActions';
+import {useSelector} from 'react-redux';
 
 const AppNavContainer = () => {
-    const auth = useSelector(state => state.AuthReducer);
-    const dispatch = useDispatch();
+  const auth = useSelector(state => state.AuthReducer);
 
-    return (
-        <NavigationContainer>
-            {auth.isLoggedIn ? <DrawerNavigation /> : <AuthNavigation />}
-        </NavigationContainer>
-    );
-}
+  return (
+    <NavigationContainer>
+      {auth.isLoggedIn ? <DrawerNavigation /> : <AuthNavigation />}
+    </NavigationContainer>
+  );
+};
 
 export default AppNavContainer;

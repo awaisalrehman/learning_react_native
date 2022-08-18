@@ -1,0 +1,18 @@
+export default {
+  primary: '#4285F4',
+  primary_dark: '#0d47a1',
+  secondary: '#aa66cc',
+  secondary_dark: '#9933CC',
+  grey: '#D3D3D3',
+  grey_dark: '#6c757d',
+  default: '#2BBBAD',
+  default_dark: '#00695c',
+  danger: '#ff4444',
+  danger_dark: '#CC0000',
+  info: '#33b5e5',
+  info_dark: '#0099CC',
+  success: '#00C851',
+  success_dark: '#007E33',
+  warning: '#ffbb33',
+  warning_dark: '#FF8800',
+};

@@ -1,8 +1,8 @@
-import React from "react";
-import { Text } from "react-native";
+import React from 'react';
+import {Text} from 'react-native';
 
 const Contacts = () => {
-    return <Text>Contact List Screen</Text>
-}
+  return <Text>Contact List Screen</Text>;
+};
 
 export default Contacts;
