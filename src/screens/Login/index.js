@@ -4,8 +4,10 @@ import colors from '../../assets/theme/colors';
 import Container from '../../components/common/container';
 import CustomButton from '../../components/common/customButton';
 import Input from '../../components/common/input';
+import env from '../../config/env';
 
 const Login = () => {
+  console.log(env);
   return (
     <Container>
       <Input label={'Username'} error="This field is required!" />
