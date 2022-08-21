@@ -43,6 +43,7 @@ const Input = ({label, icon, iconPosition, error, style, ...props}) => {
           ]}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
+          {...props}
         />
       </View>
       {error && <Text style={styles.error}>{error}</Text>}
