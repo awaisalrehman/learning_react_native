@@ -1,17 +1,17 @@
-import {LOGIN, LOGOUT, REGISTER} from '../actions/AuthActions';
+import { REGISTER_SUCCESS } from '../../constants/actionTypes';
+import {REGISTER_LOADING} from '../actions/AuthActions';
 import AuthInitialState from '../initialStates/AuthInitialState';
 
 const AuthReducer = (state = AuthInitialState, {type, payload}) => {
   switch (type) {
-    case LOGIN:
+    case REGISTER_LOADING:
       return {...state, isLoggedIn: true};
 
-    case REGISTER:
-      console.log(payload);
-      return {...state, isLoggedIn: true};
+    case REGISTER_SUCCESS:
+      return {...state, isLoggedIn: false, data: payload};
 
-    case LOGOUT:
-      return {...state, isLoggedIn: false};
+      case REGISTER_SUCCESS:
+        return {...state, isLoggedIn: false, error: payload};
 
     default:
       return state;
