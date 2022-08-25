@@ -1,6 +1,6 @@
-import { REGISTER_LOADING } from "../../constants/actionTypes";
+import {REGISTER_LOADING} from '../../constants/actionTypes';
 
-export const userRegister = (form) => dispatch => {
+export const userRegister = form => dispatch => {
   dispatch({
     type: REGISTER_LOADING,
   });
