@@ -1,19 +1,9 @@
-export const LOGIN = 'LOGIN';
-export const REGISTER = 'REGISTER';
-export const LOGOUT = 'LOGOUT';
+import { REGISTER_LOADING } from "../../constants/actionTypes";
 
-export const userLogin = (username, password) => dispatch => {
+export const userRegister = (form) => dispatch => {
   dispatch({
-    type: LOGIN,
-    payload: {
-      username,
-      password,
-    },
+    type: REGISTER_LOADING,
   });
-};
 
-export const userLogout = () => dispatch => {
-  dispatch({
-    type: LOGOUT,
-  });
+  // api call here
 };
