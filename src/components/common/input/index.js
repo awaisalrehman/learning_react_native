@@ -36,11 +36,7 @@ const Input = ({label, icon, iconPosition, error, style, ...props}) => {
         ]}>
         {icon && <View style={styles.icon}>{icon}</View>}
         <TextInput
-          style={[
-            styles.textInput,
-            {textAlign: icon ? 'center' : 'left'},
-            style,
-          ]}
+          style={[styles.textInput, style]}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           {...props}

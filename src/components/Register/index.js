@@ -8,7 +8,7 @@ import Input from '../../components/common/input';
 import {LOGIN} from '../../constants/routeNames';
 import styles from './styles.js';
 
-const RegisterComponent = () => {
+const RegisterComponent = ({onChange, onSubmit, form, errors}) => {
   const {navigate} = useNavigation();
   return (
     <Container>
@@ -20,21 +20,43 @@ const RegisterComponent = () => {
       <Text style={styles.subTitle}>Create a free account</Text>
 
       <View style={styles.form}>
-        <Input label={'Username'} placeholder={'Enter username'} />
-        <Input label={'First name'} placeholder={'Enter first name'} />
-        <Input label={'Last name'} placeholder={'Enter last name'} />
-        <Input label={'Email'} placeholder={'Enter email'} />
+        <Input
+          label={'Username'}
+          placeholder={'Enter username'}
+          error={errors.userName}
+          onChangeText={value => onChange('userName', value)}
+        />
+        <Input
+          label={'First name'}
+          placeholder={'Enter first name'}
+          error={errors.firstName}
+          onChangeText={value => onChange('firstName', value)}
+        />
+        <Input
+          label={'Last name'}
+          placeholder={'Enter last name'}
+          error={errors.lastName}
+          onChangeText={value => onChange('lastName', value)}
+        />
+        <Input
+          label={'Email'}
+          placeholder={'Enter email'}
+          error={errors.email}
+          onChangeText={value => onChange('email', value)}
+        />
         <Input
           label={'Password'}
           icon={<Text>Show</Text>}
           iconPosition={'right'}
           secureTextEntry={true}
           placeholder={'Enter password'}
+          error={errors.password}
+          onChangeText={value => onChange('password', value)}
         />
         <CustomButton
           title="Submit"
           color={colors.primary}
-          onPress={() => console.log('button pressed')}
+          onPress={onSubmit}
         />
       </View>
       <View style={styles.createSection}>

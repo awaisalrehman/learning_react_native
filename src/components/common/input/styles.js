@@ -23,6 +23,7 @@ export default StyleSheet.create({
   textInput: {
     flex: 1,
     fontSize: 25,
+    textAlign: 'left',
   },
   error: {
     color: colors.danger,
