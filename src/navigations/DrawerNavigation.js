@@ -8,7 +8,7 @@ import {
 } from '@react-navigation/drawer';
 import HomeNavigation from './HomeNavigation';
 import {HOME_NAVIGATOR, LOGOUT} from '../constants/routeNames';
-import {userLogout} from '../redux/actions/AuthActions';
+import {userLogout} from '../redux/actions/auth/register';
 
 function CustomDrawerContent(props) {
   const dispatch = useDispatch();

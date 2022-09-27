@@ -1,9 +1,35 @@
 import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import RegisterComponent from '../../components/Register';
+import register, {clearAuthState} from '../../redux/actions/auth/register';
+import {useEffect} from 'react';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import {LOGIN} from '../../constants/routeNames';
+import {useCallback} from 'react';
 
 const SignUp = () => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
+  const {data, error, loading} = useSelector(state => state.AuthReducer);
+  const dispatch = useDispatch();
+  const {navigate} = useNavigation();
+
+  useEffect(() => {
+    if (Object.keys(data).length) {
+      navigate(LOGIN);
+    }
+  }, [data]);
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        if (Object.keys(data).length || error) {
+          console.log('in focus effect');
+          clearAuthState()(dispatch);
+        }
+      };
+    }, [data, error]),
+  );
 
   const onChange = (name, value) => {
     setForm({...form, [name]: value});
@@ -61,6 +87,14 @@ const SignUp = () => {
         return {...prev, password: 'The password field is required'};
       });
     }
+
+    if (
+      Object.values(form).length == 5 &&
+      Object.values(form).every(item => item.trim().length > 0) &&
+      Object.values(errors).every(item => !item)
+    ) {
+      register(form)(dispatch);
+    }
   };
 
   return (
@@ -69,6 +103,8 @@ const SignUp = () => {
       onSubmit={onSubmit}
       form={form}
       errors={errors}
+      loading={loading}
+      error={error}
     />
   );
 };

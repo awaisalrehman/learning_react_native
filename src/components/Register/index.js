@@ -8,7 +8,14 @@ import Input from '../../components/common/input';
 import {LOGIN} from '../../constants/routeNames';
 import styles from './styles.js';
 
-const RegisterComponent = ({onChange, onSubmit, form, errors}) => {
+const RegisterComponent = ({
+  onChange,
+  onSubmit,
+  form,
+  errors,
+  loading,
+  error,
+}) => {
   const {navigate} = useNavigation();
   return (
     <Container>
@@ -20,28 +27,29 @@ const RegisterComponent = ({onChange, onSubmit, form, errors}) => {
       <Text style={styles.subTitle}>Create a free account</Text>
 
       <View style={styles.form}>
+        {error?.error && <Text>{error.error}</Text>}
         <Input
           label={'Username'}
           placeholder={'Enter username'}
-          error={errors.userName}
+          error={errors.userName || error?.username?.[0]}
           onChangeText={value => onChange('userName', value)}
         />
         <Input
           label={'First name'}
           placeholder={'Enter first name'}
-          error={errors.firstName}
+          error={errors.firstName || error?.first_name?.[0]}
           onChangeText={value => onChange('firstName', value)}
         />
         <Input
           label={'Last name'}
           placeholder={'Enter last name'}
-          error={errors.lastName}
+          error={errors.lastName || error?.last_name?.[0]}
           onChangeText={value => onChange('lastName', value)}
         />
         <Input
           label={'Email'}
           placeholder={'Enter email'}
-          error={errors.email}
+          error={errors.email || error?.email?.[0]}
           onChangeText={value => onChange('email', value)}
         />
         <Input
@@ -50,13 +58,15 @@ const RegisterComponent = ({onChange, onSubmit, form, errors}) => {
           iconPosition={'right'}
           secureTextEntry={true}
           placeholder={'Enter password'}
-          error={errors.password}
+          error={errors.password || error?.password?.[0]}
           onChangeText={value => onChange('password', value)}
         />
         <CustomButton
           title="Submit"
           color={colors.primary}
           onPress={onSubmit}
+          loading={loading}
+          disabled={loading}
         />
       </View>
       <View style={styles.createSection}>
