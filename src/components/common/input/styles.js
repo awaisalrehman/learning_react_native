@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   wrapper: {
     alignItems: 'center',
-    height: 55,
+    height: 45,
     borderWidth: 1,
     borderColor: colors.grey,
     borderRadius: 4,
@@ -22,7 +22,7 @@ export default StyleSheet.create({
   },
   textInput: {
     flex: 1,
-    fontSize: 25,
+    fontSize: 15,
     textAlign: 'left',
   },
   error: {

@@ -18,25 +18,30 @@ const LoginComponent = () => {
       />
       <Text style={styles.title}>Welcome to RNContacts</Text>
       <Text style={styles.subTitle}>Please login here</Text>
-      <View style={styles.form}>
-        <Input label={'Username'} />
-        <Input
-          label={'Password'}
-          icon={<Text>Show</Text>}
-          iconPosition={'right'}
-          secureTextEntry={true}
-        />
-        <CustomButton
-          title="Submit"
-          color={colors.primary}
-          onPress={() => console.log('button pressed')}
-        />
-      </View>
-      <View style={styles.createSection}>
-        <Text style={styles.infoText}>Need a new account?</Text>
-        <TouchableOpacity onPress={() => navigate(REGISTER)}>
-          <Text style={styles.link}>Register</Text>
-        </TouchableOpacity>
+
+      <View style={styles.formWrapper}>
+        <View style={styles.form}>
+          <Input label={'Username'} placeholder={'Enter username'} />
+          <Input
+            label={'Password'}
+            placeholder={'Enter password'}
+            icon={<Text>Show</Text>}
+            iconPosition={'right'}
+            secureTextEntry={true}
+          />
+          <CustomButton
+            title="Submit"
+            color={colors.primary}
+            onPress={() => console.log('button pressed')}
+          />
+
+          <View style={styles.registerSection}>
+            <Text style={styles.infoText}>Need a new account?</Text>
+            <TouchableOpacity onPress={() => navigate(REGISTER)}>
+              <Text style={styles.link}>Register</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </Container>
   );

@@ -20,9 +20,16 @@ export default StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 20,
   },
-  createSection: {
+  formWrapper: {
+    backgroundColor: '#ffddcc',
+    borderRadius: 15,
+  },
+  form: {
+    paddingHorizontal: 30,
+  },
+  registerSection: {
     flexDirection: 'row',
-    marginTop: 10,
+    marginVertical: 10,
   },
   infoText: {
     fontSize: 17,

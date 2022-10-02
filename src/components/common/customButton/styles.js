@@ -5,7 +5,7 @@ export default StyleSheet.create({
     paddingVertical: 10,
   },
   wrapper: {
-    height: 55,
+    height: 45,
     borderRadius: 4,
     flexDirection: 'row',
     alignItems: 'center',
