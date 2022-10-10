@@ -3,7 +3,16 @@ import {View, Text, TextInput} from 'react-native';
 import colors from '../../../assets/theme/colors';
 import styles from './styles';
 
-const Input = ({label, icon, iconPosition, error, style, ...props}) => {
+const Input = ({
+  label,
+  icon,
+  iconPosition,
+  error,
+  style,
+  autoCapitalize = 'sentences',
+  keyboardType = 'default',
+  ...props
+}) => {
   const [focused, setFocused] = useState(false);
 
   const getFlexDirection = () => {
@@ -39,6 +48,7 @@ const Input = ({label, icon, iconPosition, error, style, ...props}) => {
           style={[styles.textInput, style]}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
+          autoCapitalize={autoCapitalize}
           {...props}
         />
       </View>
