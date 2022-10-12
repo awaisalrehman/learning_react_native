@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import RegisterComponent from '../../components/Register';
-import register, {clearAuthState} from '../../redux/actions/auth/register';
+import register from '../../redux/actions/auth/register';
+import {clearAuthState, clearStateError} from '../../redux/actions/auth/error';
 import {useEffect} from 'react';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {LOGIN} from '../../constants/routeNames';
@@ -24,12 +25,15 @@ const SignUp = () => {
     useCallback(() => {
       return () => {
         if (Object.keys(data).length || error) {
-          console.log('in focus effect');
           clearAuthState()(dispatch);
         }
       };
     }, [data, error]),
   );
+
+  const handleErrorDismiss = () => {
+    clearStateError()(dispatch);
+  };
 
   const onChange = (name, value) => {
     setForm({...form, [name]: value});
@@ -89,7 +93,7 @@ const SignUp = () => {
     }
 
     if (
-      Object.values(form).length == 5 &&
+      Object.values(form).length === 5 &&
       Object.values(form).every(item => item.trim().length > 0) &&
       Object.values(errors).every(item => !item)
     ) {
@@ -105,6 +109,7 @@ const SignUp = () => {
       errors={errors}
       loading={loading}
       error={error}
+      onErrorDismiss={handleErrorDismiss}
     />
   );
 };

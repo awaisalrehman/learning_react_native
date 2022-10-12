@@ -3,14 +3,7 @@ import {
   REGISTER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  CLEAR_AUTH_STATE,
 } from '../../../constants/actionTypes/auth';
-
-export const clearAuthState = () => dispatch => {
-  dispatch({
-    type: CLEAR_AUTH_STATE,
-  });
-};
 
 export default ({
     userName: username,

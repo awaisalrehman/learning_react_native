@@ -15,6 +15,7 @@ const Message = ({
   onDismiss,
 }) => {
   const [dismiss, setDismiss] = useState(false);
+
   const getBgColor = () => {
     if (success) {
       return colors.success;

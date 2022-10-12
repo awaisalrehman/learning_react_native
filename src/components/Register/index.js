@@ -7,6 +7,7 @@ import CustomButton from '../../components/common/customButton';
 import Input from '../../components/common/input';
 import {LOGIN} from '../../constants/routeNames';
 import styles from './styles.js';
+import Message from '../common/Message';
 
 const RegisterComponent = ({
   onChange,
@@ -15,6 +16,7 @@ const RegisterComponent = ({
   errors,
   loading,
   error,
+  onErrorDismiss,
 }) => {
   const {navigate} = useNavigation();
   return (
@@ -26,12 +28,24 @@ const RegisterComponent = ({
       <Text style={styles.title}>Welcome to RNContacts</Text>
       <Text style={styles.subTitle}>Create a free account</Text>
 
+      {error?.error && (
+        <Message message={error?.error} onDismiss={onErrorDismiss} danger />
+      )}
+
+      {error && !error?.error && (
+        <Message
+          message={'Something went wrong!'}
+          onDismiss={onErrorDismiss}
+          danger
+        />
+      )}
+
       <View style={styles.formWrapper}>
-        {error?.error && <Text>{error.error}</Text>}
         <View style={styles.form}>
           <Input
             label={'Username'}
             placeholder={'Enter username'}
+            autoCapitalize={'none'}
             error={errors.userName || error?.username?.[0]}
             onChangeText={value => onChange('userName', value)}
           />
@@ -50,6 +64,8 @@ const RegisterComponent = ({
           <Input
             label={'Email'}
             placeholder={'Enter email'}
+            autoCapitalize={'none'}
+            keyboardType={'email-address'}
             error={errors.email || error?.email?.[0]}
             onChangeText={value => onChange('email', value)}
           />
