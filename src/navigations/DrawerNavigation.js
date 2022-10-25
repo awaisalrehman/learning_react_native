@@ -1,37 +1,24 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeNavigation from './HomeNavigation';
-import {HOME_NAVIGATOR, LOGOUT} from '../constants/routeNames';
-import {userLogout} from '../redux/actions/auth/login';
-
-function CustomDrawerContent(props) {
-  const dispatch = useDispatch();
-
-  const logout = () => {
-    dispatch(userLogout());
-  };
-
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem label={LOGOUT} onPress={logout} />
-    </DrawerContentScrollView>
-  );
-}
+import {HOME_NAVIGATOR} from '../constants/routeNames';
+import SideMenu from './SideMenu';
 
 const DrawerNavigation = () => {
   const Drawer = createDrawerNavigator();
 
+  const getDrawerContent = navigation => {
+    return <SideMenu navigation={navigation} />;
+  };
+
   return (
     <Drawer.Navigator
-      screenOptions={{header: () => null, swipeEdgeWidth: 100}}
-      drawerContent={props => <CustomDrawerContent {...props} />}>
+      screenOptions={{
+        swipeEdgeWidth: 100,
+        drawerType: 'slide',
+        header: () => null,
+      }}
+      drawerContent={({navigation}) => getDrawerContent(navigation)}>
       <Drawer.Screen name={HOME_NAVIGATOR} component={HomeNavigation} />
     </Drawer.Navigator>
   );

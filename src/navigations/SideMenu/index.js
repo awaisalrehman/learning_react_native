@@ -1,0 +1,68 @@
+import React from 'react';
+import {
+  Alert,
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {useDispatch} from 'react-redux';
+import Container from '../../components/common/container';
+import {LOGOUT, SETTINGS} from '../../constants/routeNames';
+import styles from './styles';
+import {userLogout} from '../../redux/actions/auth/login';
+
+const SideMenu = ({navigation}) => {
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    navigation.toggleDrawer();
+    Alert.alert('Logout!', 'Are you sure, you want to logout?', [
+      {
+        text: 'Cancle',
+        onPress: () => {},
+      },
+      {
+        text: 'OK',
+        onPress: () => {
+          dispatch(userLogout());
+        },
+      },
+    ]);
+  };
+
+  const menuItems = [
+    {
+      icon: <Text>T</Text>,
+      name: SETTINGS,
+      onPress: () => {
+        navigation.navigate(SETTINGS);
+      },
+    },
+    {
+      icon: <Text>T</Text>,
+      name: LOGOUT,
+      onPress: handleLogout,
+    },
+  ];
+  return (
+    <SafeAreaView>
+      <Container>
+        <Image
+          source={require('../../assets/images/logo.png')}
+          style={styles.logoImage}
+        />
+        <View style={{paddingHorizontal: 70}}>
+          {menuItems.map(({name, icon, onPress}) => (
+            <TouchableOpacity key={name} onPress={onPress} style={styles.item}>
+              {icon}
+              <Text style={styles.itemText}>{name}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </Container>
+    </SafeAreaView>
+  );
+};
+
+export default SideMenu;
