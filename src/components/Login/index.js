@@ -16,6 +16,7 @@ import Message from '../common/Message';
 import styles from './styles';
 
 const LoginComponent = ({
+  form,
   onChange,
   onSubmit,
   loading,
@@ -51,6 +52,7 @@ const LoginComponent = ({
             <Input
               label={'Username'}
               placeholder={'Enter username'}
+              value={form?.userName || null}
               autoCapitalize={'none'}
               onChangeText={value => onChange('userName', value)}
             />

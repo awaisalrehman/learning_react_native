@@ -15,12 +15,6 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const {navigate} = useNavigation();
 
-  useEffect(() => {
-    if (Object.keys(data).length) {
-      navigate(LOGIN);
-    }
-  }, [data]);
-
   useFocusEffect(
     useCallback(() => {
       return () => {
@@ -97,7 +91,9 @@ const SignUp = () => {
       Object.values(form).every(item => item.trim().length > 0) &&
       Object.values(errors).every(item => !item)
     ) {
-      register(form)(dispatch);
+      register(form)(dispatch)((response) => {
+        navigate(LOGIN, {data: response});
+      });
     }
   };
 
