@@ -8,12 +8,14 @@ import { useEffect } from 'react';
 
 const Login = () => {
   const [form, setForm] = useState({});
+  const [justSignup, setJustSignup] = useState(false);
   const {error, loading} = useSelector(state => state.AuthReducer);
   const dispatch = useDispatch();
   const {params} = useRoute();
 
   useEffect(() => {
     if (params?.data) {
+      setJustSignup(true);
       setForm({...form, userName: params.data.username});
     }
   }, [params]);
@@ -23,6 +25,7 @@ const Login = () => {
   };
 
   const onChange = (name, value) => {
+    setJustSignup(false);
     setForm({...form, [name]: value});
   };
 
@@ -43,6 +46,7 @@ const Login = () => {
       error={error}
       loading={loading}
       onErrorDismiss={handleErrorDismiss}
+      justSignup={justSignup}
     />
   );
 };

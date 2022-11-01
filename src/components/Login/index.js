@@ -22,6 +22,7 @@ const LoginComponent = ({
   loading,
   error,
   onErrorDismiss,
+  justSignup
 }) => {
   const {navigate} = useNavigation();
 
@@ -34,6 +35,13 @@ const LoginComponent = ({
         />
         <Text style={styles.title}>Welcome to RNContacts</Text>
         <Text style={styles.subTitle}>Please login here</Text>
+
+        {justSignup && (
+          <Message
+            message={'Account created successfully!'}
+            success
+          />
+        )}
 
         {error?.error && (
           <Message message={error?.error} onDismiss={onErrorDismiss} danger />
