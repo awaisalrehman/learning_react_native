@@ -91,7 +91,7 @@ const SignUp = () => {
       Object.values(form).every(item => item.trim().length > 0) &&
       Object.values(errors).every(item => !item)
     ) {
-      register(form)(dispatch)((response) => {
+      register(form)(dispatch)(response => {
         navigate(LOGIN, {data: response});
       });
     }

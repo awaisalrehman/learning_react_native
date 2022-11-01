@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import Container from '../../components/common/container';
+import Icon from '../../components/common/icon';
 
 const Contacts = () => {
   const {setOptions, toggleDrawer} = useNavigation();
@@ -10,7 +11,12 @@ const Contacts = () => {
     setOptions({
       headerLeft: () => (
         <TouchableOpacity onPress={() => toggleDrawer()}>
-          <Text style={{paddingLeft: 25}}>Nav</Text>
+          <Icon
+            type="ionicon"
+            name="menu"
+            size={25}
+            style={{padding: 15, color: 'black'}}
+          />
         </TouchableOpacity>
       ),
     });

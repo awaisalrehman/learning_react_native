@@ -8,7 +8,8 @@ import Input from '../../components/common/input';
 import {LOGIN} from '../../constants/routeNames';
 import styles from './styles.js';
 import Message from '../common/Message';
-import { useState } from 'react';
+import {useState} from 'react';
+import Icon from '../common/icon';
 
 const RegisterComponent = ({
   onChange,
@@ -73,7 +74,18 @@ const RegisterComponent = ({
           />
           <Input
             label={'Password'}
-            icon={<TouchableOpacity onPress={()=> {setSecureTextEntry(prev=>!prev)}}><Text>{secureTextEntry ? 'Show' : 'Hide'}</Text></TouchableOpacity>}
+            icon={
+              <TouchableOpacity
+                onPress={() => {
+                  setSecureTextEntry(prev => !prev);
+                }}>
+                <Icon
+                  type={'entypo'}
+                  name={secureTextEntry ? 'eye' : 'eye-with-line'}
+                  size={21}
+                />
+              </TouchableOpacity>
+            }
             iconPosition={'right'}
             secureTextEntry={secureTextEntry}
             placeholder={'Enter password'}

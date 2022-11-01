@@ -12,6 +12,7 @@ import Container from '../../components/common/container';
 import {LOGOUT, SETTINGS} from '../../constants/routeNames';
 import styles from './styles';
 import {userLogout} from '../../redux/actions/auth/login';
+import Icon from '../../components/common/icon';
 
 const SideMenu = ({navigation}) => {
   const dispatch = useDispatch();
@@ -33,14 +34,14 @@ const SideMenu = ({navigation}) => {
 
   const menuItems = [
     {
-      icon: <Text>T</Text>,
+      icon: <Icon type="fontisto" name="player-settings" size={17} />,
       name: SETTINGS,
       onPress: () => {
         navigation.navigate(SETTINGS);
       },
     },
     {
-      icon: <Text>T</Text>,
+      icon: <Icon type="materialCommunity" name="logout" size={17} />,
       name: LOGOUT,
       onPress: handleLogout,
     },

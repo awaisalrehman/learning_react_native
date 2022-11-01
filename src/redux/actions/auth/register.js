@@ -12,7 +12,8 @@ export default ({
     firstName: first_name,
     lastName: last_name,
   }) =>
-  dispatch => onSuccess => {
+  dispatch =>
+  onSuccess => {
     dispatch({
       type: REGISTER_LOADING,
     });

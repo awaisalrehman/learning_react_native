@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import LoginComponent from '../../components/Login';
 import loginUser from '../../redux/actions/auth/login';
 import {clearStateError} from '../../redux/actions/auth/error';
-import { useRoute } from '@react-navigation/native';
-import { useEffect } from 'react';
+import {useRoute} from '@react-navigation/native';
+import {useEffect} from 'react';
 
 const Login = () => {
   const [form, setForm] = useState({});

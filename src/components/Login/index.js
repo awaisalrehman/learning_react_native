@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
   Image,
@@ -14,6 +14,7 @@ import Input from '../../components/common/input';
 import {REGISTER} from '../../constants/routeNames';
 import Message from '../common/Message';
 import styles from './styles';
+import Icon from '../common/icon';
 
 const LoginComponent = ({
   form,
@@ -22,7 +23,7 @@ const LoginComponent = ({
   loading,
   error,
   onErrorDismiss,
-  justSignup
+  justSignup,
 }) => {
   const {navigate} = useNavigation();
   const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -38,10 +39,7 @@ const LoginComponent = ({
         <Text style={styles.subTitle}>Please login here</Text>
 
         {justSignup && (
-          <Message
-            message={'Account created successfully!'}
-            success
-          />
+          <Message message={'Account created successfully!'} success />
         )}
 
         {error?.error && (
@@ -69,7 +67,18 @@ const LoginComponent = ({
               label={'Password'}
               placeholder={'Enter password'}
               keyboardType={'email-address'}
-              icon={<TouchableOpacity onPress={()=> {setSecureTextEntry(prev=>!prev)}}><Text>{secureTextEntry ? 'Show' : 'Hide'}</Text></TouchableOpacity>}
+              icon={
+                <TouchableOpacity
+                  onPress={() => {
+                    setSecureTextEntry(prev => !prev);
+                  }}>
+                  <Icon
+                    type={'entypo'}
+                    name={secureTextEntry ? 'eye' : 'eye-with-line'}
+                    size={21}
+                  />
+                </TouchableOpacity>
+              }
               iconPosition={'right'}
               secureTextEntry={secureTextEntry}
               onChangeText={value => onChange('password', value)}
