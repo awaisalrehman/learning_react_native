@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
   Image,
@@ -25,6 +25,7 @@ const LoginComponent = ({
   justSignup
 }) => {
   const {navigate} = useNavigation();
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
 
   return (
     <Container>
@@ -68,9 +69,9 @@ const LoginComponent = ({
               label={'Password'}
               placeholder={'Enter password'}
               keyboardType={'email-address'}
-              icon={<Text>Show</Text>}
+              icon={<TouchableOpacity onPress={()=> {setSecureTextEntry(prev=>!prev)}}><Text>{secureTextEntry ? 'Show' : 'Hide'}</Text></TouchableOpacity>}
               iconPosition={'right'}
-              secureTextEntry={true}
+              secureTextEntry={secureTextEntry}
               onChangeText={value => onChange('password', value)}
             />
             <CustomButton

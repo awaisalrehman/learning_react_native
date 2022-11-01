@@ -8,6 +8,7 @@ import Input from '../../components/common/input';
 import {LOGIN} from '../../constants/routeNames';
 import styles from './styles.js';
 import Message from '../common/Message';
+import { useState } from 'react';
 
 const RegisterComponent = ({
   onChange,
@@ -19,6 +20,7 @@ const RegisterComponent = ({
   onErrorDismiss,
 }) => {
   const {navigate} = useNavigation();
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
   return (
     <Container>
       <Image
@@ -71,9 +73,9 @@ const RegisterComponent = ({
           />
           <Input
             label={'Password'}
-            icon={<Text>Show</Text>}
+            icon={<TouchableOpacity onPress={()=> {setSecureTextEntry(prev=>!prev)}}><Text>{secureTextEntry ? 'Show' : 'Hide'}</Text></TouchableOpacity>}
             iconPosition={'right'}
-            secureTextEntry={true}
+            secureTextEntry={secureTextEntry}
             placeholder={'Enter password'}
             error={errors.password || error?.password?.[0]}
             onChangeText={value => onChange('password', value)}
