@@ -2,14 +2,14 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import colors from '../../assets/theme/colors';
-import Container from '../../components/common/container';
-import CustomButton from '../../components/common/customButton';
-import Input from '../../components/common/input';
+import Container from '../../components/common/Container';
+import CustomButton from '../../components/common/CustomButton';
+import Input from '../../components/common/Input';
 import {LOGIN} from '../../constants/routeNames';
 import styles from './styles.js';
 import Message from '../common/Message';
 import {useState} from 'react';
-import Icon from '../common/icon';
+import Icon from '../common/Icon';
 
 const RegisterComponent = ({
   onChange,

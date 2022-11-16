@@ -8,11 +8,11 @@ import {
   View,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
-import Container from '../../components/common/container';
+import Container from '../../components/common/Container';
 import {LOGOUT, SETTINGS} from '../../constants/routeNames';
 import styles from './styles';
 import {userLogout} from '../../redux/actions/auth/login';
-import Icon from '../../components/common/icon';
+import Icon from '../../components/common/Icon';
 
 const SideMenu = ({navigation}) => {
   const dispatch = useDispatch();

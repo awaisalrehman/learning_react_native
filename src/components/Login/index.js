@@ -8,13 +8,13 @@ import {
   View,
 } from 'react-native';
 import colors from '../../assets/theme/colors';
-import Container from '../../components/common/container';
-import CustomButton from '../../components/common/customButton';
-import Input from '../../components/common/input';
+import Container from '../../components/common/Container';
+import CustomButton from '../../components/common/CustomButton';
+import Input from '../../components/common/Input';
 import {REGISTER} from '../../constants/routeNames';
 import Message from '../common/Message';
 import styles from './styles';
-import Icon from '../common/icon';
+import Icon from '../common/Icon';
 
 const LoginComponent = ({
   form,

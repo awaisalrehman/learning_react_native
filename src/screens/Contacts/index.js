@@ -1,8 +1,8 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
-import Container from '../../components/common/container';
-import Icon from '../../components/common/icon';
+import Container from '../../components/common/Container';
+import Icon from '../../components/common/Icon';
 
 const Contacts = () => {
   const {setOptions, toggleDrawer} = useNavigation();
