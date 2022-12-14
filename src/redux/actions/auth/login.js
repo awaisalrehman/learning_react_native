@@ -20,25 +20,37 @@ const loginUser =
         password,
       })
       .then(response => {
-        AsyncStorage.setItem('token', response.data.token);
-        AsyncStorage.setItem('user', JSON.stringify(response.data.user));
-
-        dispatch({
-          type: LOGIN_SUCCESS,
-          payload: response.data,
-        });
+        const result = response?.data;
+        if (result.status == 'Success') {
+          AsyncStorage.setItem('token', result.data.token);
+          AsyncStorage.setItem('user', JSON.stringify(result.data.user));
+  
+          dispatch({
+            type: LOGIN_SUCCESS,
+            payload: result.data.user,
+          });
+        }
+        else if (result.status == 'Error') {
+          dispatch({
+            type: LOGIN_FAIL,
+            payload: result?.message ?
+                {error: result.message} :
+                {error: 'Something went wrong, try again!'}
+          });
+        }
       })
       .catch(error => {
         dispatch({
           type: LOGIN_FAIL,
-          payload: error.response?.data
-            ? error.response?.data
+          payload: error.response?.message
+            ? {error: error.response?.message}
             : {error: 'Something went wrong, try again!'},
         });
       });
   };
 
 export const userLogout = () => async dispatch => {
+  // call logout api here
   await AsyncStorage.removeItem('token');
   await AsyncStorage.removeItem('user');
 

@@ -28,18 +28,29 @@ export default ({
         password,
       })
       .then(res => {
-        dispatch({
-          type: REGISTER_SUCCESS,
-          payload: res.data,
-        });
-
-        onSuccess(res.data);
+        const result = res?.data;
+        if (result.status == 'Success') {
+          dispatch({
+            type: REGISTER_SUCCESS,
+            payload: result.data,
+          });
+  
+          onSuccess(result.data);
+        }
+        else if (result.status == 'Error') {
+          dispatch({
+              type: REGISTER_FAIL,
+              payload: result?.message ?
+              {error: result.message} :
+              {error: 'Something went wrong, try again!'}
+          });
+        }
       })
       .catch(err => {
         dispatch({
           type: REGISTER_FAIL,
-          payload: err.response?.data
-            ? err.response.data
+          payload: err.response?.message
+            ? {error: err.response?.message}
             : {error: 'Something went wrong, try again!'},
         });
       });
