@@ -5,8 +5,9 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import AuthReducer from './reducers/AuthReducer';
+import ContactReducer from './reducers/ContactReducer';
 
-const rootReducer = combineReducers({AuthReducer});
+const rootReducer = combineReducers({AuthReducer, ContactReducer});
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

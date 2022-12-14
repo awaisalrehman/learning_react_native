@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import RegisterComponent from '../../components/Register';
 import register from '../../redux/actions/auth/register';
 import {clearAuthState, clearStateError} from '../../redux/actions/auth/error';
-import {useEffect} from 'react';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {LOGIN} from '../../constants/routeNames';
 import {useCallback} from 'react';
