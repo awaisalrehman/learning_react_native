@@ -49,9 +49,9 @@ export default ({
       .catch(err => {
         dispatch({
           type: REGISTER_FAIL,
-          payload: err.response?.message
-            ? {error: err.response?.message}
-            : {error: 'Something went wrong, try again!'},
+          payload: err.response?.data?.errors ?
+            err.response?.data?.errors :
+            {error: err.response?.data?.message},
         });
       });
   };

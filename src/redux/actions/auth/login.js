@@ -42,9 +42,9 @@ const loginUser =
       .catch(error => {
         dispatch({
           type: LOGIN_FAIL,
-          payload: error.response?.message
-            ? {error: error.response?.message}
-            : {error: 'Something went wrong, try again!'},
+          payload: err.response?.data?.errors ?
+            err.response?.data?.errors :
+            {error: err.response?.data?.message},
         });
       });
   };
